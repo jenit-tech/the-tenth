@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Rubik, Manrope } from "@next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const rubik = Rubik({
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-rubik",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const manrope = Manrope({
   subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-manrope",
 });
 
 export const metadata: Metadata = {
@@ -19,13 +22,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${rubik.variable} ${manrope.variable}`}>
+      {/* Apply rubik as base font */}
+      <body className="font-rubik">
+        <Navbar />
         {children}
+       
       </body>
     </html>
   );
