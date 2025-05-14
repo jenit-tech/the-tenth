@@ -1,6 +1,8 @@
 "use client"
 import React from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
+
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -83,33 +85,42 @@ const Box = () => {
           </p>
 
           {/* Logo Sections */}
-          <div className="flex flex-col w-[596px] h-[1168.28px] gap-[20px] pt-10">
-            {[
-              ["20.png", "3.png", "1.png", "31.png"],
-              ["11.png", "6.png", "8.png", "17.png"],
-              ["7.png", "2.png", "0.png", "18.png"],
-              ["19.png", "4.png", "10.png", "28.png"],
-              ["expedia.png", "9.png", "15.png", "wagely.png"],
-              ["12.png", "23.png", "24.png", "13.png"],
-              ["29.png", "32.png", "euyan.png", "30.png"],
-              ["14.png", "25.png", "27.png", "21.png"],
-              ["5.png", "16.png"],
-            ].map((group, idx) => (
-              <motion.div
-                key={idx}
-                custom={idx + 4}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-                className={`flex items-center w-[596px] gap-[40px] ${group.length < 4 ? 'justify-end' : ''}`}
-              >
-                {group.map((src, i) => (
-                  <img key={i} src={`./${src}`} alt={`logo-${i}`} className="w-[119px] h-auto max-h-[119px]" />
-                ))}
-              </motion.div>
-            ))}
-          </div>
+          {/* Logo Sections */}
+<div className="flex flex-col w-[596px] h-[1168.28px] gap-[20px] pt-10">
+  {[
+    ["20.png", "3.png", "1.png", "31.png"],
+    ["11.png", "6.png", "8.png", "17.png"],
+    ["7.png", "2.png", "0.png", "18.png"],
+    ["19.png", "4.png", "10.png", "28.png"],
+    ["expedia.png", "9.png", "15.png", "wagely.png"],
+    ["12.png", "23.png", "24.png", "13.png"],
+    ["29.png", "32.png", "euyan.png", "30.png"],
+    ["14.png", "25.png", "27.png", "21.png"],
+    ["5.png", "16.png"],
+  ].map((group, idx) => (
+    <motion.div
+      key={idx}
+      custom={idx + 4}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={fadeInUp}
+      className={`flex items-center w-[596px] gap-[40px] ${group.length < 4 ? 'justify-end' : ''}`}
+    >
+      {group.map((src, i) => (
+        <Image
+          key={i}
+          src={`/${src}`} // must be in public folder
+          alt={`logo-${i}`}
+          width={119}
+          height={119}
+          className="h-auto max-h-[119px] w-[119px]"
+        />
+      ))}
+    </motion.div>
+  ))}
+</div>
+
         </motion.div>
       </div>
     </div>
