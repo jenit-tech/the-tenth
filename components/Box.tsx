@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from 'next/image'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -62,7 +63,8 @@ const Box = () => {
             WE PRACTICE WHAT WE TEACH
           </h3>
           <p className="font-manrope font-normal text-[16px] leading-[140%] tracking-[1%] text-[#3A3A3A] mt-4">
-            We don't just consult. We teach. <br />
+          We don&apos;t just consult. We teach.
+          <br />
             Your team learns to find insights that last, <br />
             no coding required. Anyone can do it. <br /><br />
             Most of all, they will gain by learning not only from trainers, but real world practitioners.
@@ -104,15 +106,15 @@ const Box = () => {
             ].map((row, rowIndex) => (
               <div key={rowIndex} className="flex items-center w-[596px] h-[119px] gap-[40px]">
                 {row.map((src, i) => (
-                  <img key={i} src={src} alt={`Logo ${rowIndex + 1}-${i + 1}`} className="w-[119px] object-contain" />
+                  <Image key={i} src={src} alt={`Logo ${rowIndex + 1}-${i + 1}`} className="w-[119px] object-contain" />
                 ))}
               </div>
             ))}
 
             {/* Last row */}
             <div className="flex items-center justify-end w-[596px] h-[78px] gap-[40px] pb-8">
-              <img src="./5.png" alt="Logo last-1" className="w-[119px] h-[71px]" />
-              <img src="./16.png" alt="Logo last-2" className="w-[119px] h-[78px]" />
+              <Image src="./5.png" alt="Logo last-1" className="w-[119px] h-[71px]" />
+              <Image src="./16.png" alt="Logo last-2" className="w-[119px] h-[78px]" />
             </div>
           </div>
         </motion.div>
