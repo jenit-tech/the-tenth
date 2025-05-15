@@ -7,11 +7,11 @@ const HeroSection = () => {
     return (
         <section className="relative min-h-[90vh] flex items-center bg-gradient-to-bl from-blue-200 via-white to-purple-200">
 
-     
-      
+
+
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    
+
                     {/* Left Section */}
                     <div className="w-full max-w-[699px]">
                         <div className="w-full space-y-6">
@@ -25,8 +25,9 @@ const HeroSection = () => {
 
                             <div className="space-y-4">
                                 <h3 className="font-main font-medium text-[16px] leading-[140%] tracking-[1%] text-[#2E2C32B2]">
-                                    Let us know your Email ID. We'll get back to you ASAP
+                                    Let us know your Email ID. We&apos;ll get back to you ASAP
                                 </h3>
+
 
                                 <form className="flex flex-col sm:flex-row gap-[20px]">
                                     <input
@@ -50,9 +51,9 @@ const HeroSection = () => {
 
                     {/* Right Section */}
                     <div className="w-full max-w-[550px]">
-                      <Box/>
+                        <Box />
                     </div>
-                    
+
 
                 </div>
             </div>

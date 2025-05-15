@@ -22,7 +22,7 @@ const Box = () => {
     offset: ["start end", "end start"],
   });
   const opacity = useTransform(scrollYProgress, [1, 0.8, 0], [1, 1, 0]);
-  
+
   return (
     <div className="w-[550px] h-[376px] absolute top-[152px] left-[768px] pt-[54px] pb-[54px] overflow-y-auto overscroll-contain scroll-smooth no-scrollbar">
       <div className="flex flex-col gap-[20px]">
@@ -35,7 +35,7 @@ const Box = () => {
           whileInView="visible"
           viewport={{ once: false }}
           custom={1}
-          style={{opacity}}
+          style={{ opacity }}
         >
           <h3 className="font-manrope font-bold text-[24px] leading-[140%] tracking-[1%] text-[#3A3A3A] mb-6 uppercase">
             Simple, Efficient, Precise
@@ -46,8 +46,9 @@ const Box = () => {
             No unnecessary complexity, just clear insights that help you reach customers faster and more efficiently. <br />
             The result? <br />
             Strategies that work better and cost less. <br />
-            We're self-funded, independent and focused on one thing: delivering results you can measure.
+            We&apos;re self-funded, independent and focused on one thing: delivering results you can measure.
           </p>
+
         </motion.div>
 
         {/* Section 2 */}
@@ -63,8 +64,8 @@ const Box = () => {
             WE PRACTICE WHAT WE TEACH
           </h3>
           <p className="font-manrope font-normal text-[16px] leading-[140%] tracking-[1%] text-[#3A3A3A] mt-4">
-          We don&apos;t just consult. We teach.
-          <br />
+            We don&apos;t just consult. We teach.
+            <br />
             Your team learns to find insights that last, <br />
             no coding required. Anyone can do it. <br /><br />
             Most of all, they will gain by learning not only from trainers, but real world practitioners.
