@@ -1,8 +1,5 @@
-"use client"
-import React from 'react'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-
+import React, { useRef } from 'react'
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -18,17 +15,26 @@ const fadeInUp = {
 }
 
 const Box = () => {
+  const textRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: textRef,
+    offset: ["start end", "end start"],
+  });
+  const opacity = useTransform(scrollYProgress, [1, 0.8, 0], [1, 1, 0]);
+  
   return (
-    <div className="w-[550px] h-[376px] absolute top-[152px] left-[768px] pt-[54px] pb-[54px] overflow-y-auto overscroll-contain scroll-smooth scrollbar-hide">
+    <div className="w-[550px] h-[376px] absolute top-[152px] left-[768px] pt-[54px] pb-[54px] overflow-y-auto overscroll-contain scroll-smooth no-scrollbar">
       <div className="flex flex-col gap-[20px]">
-        {/* Card 1 */}
+        {/* Section 1 */}
         <motion.div
-          custom={1}
+          className="w-[550px] min-h-[282px] rounded-[12px] p-[20px] bg-[#FAFAFA] shadow-[0_0_4px_0_#00000040]"
+          ref={textRef}
+          variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-          className="w-[550px] min-h-[282px] rounded-[12px] p-[20px] bg-[#FAFAFA] shadow-[0_0_4px_0_#00000040]"
+          viewport={{ once: false }}
+          custom={1}
+          style={{opacity}}
         >
           <h3 className="font-manrope font-bold text-[24px] leading-[140%] tracking-[1%] text-[#3A3A3A] mb-6 uppercase">
             Simple, Efficient, Precise
@@ -43,14 +49,14 @@ const Box = () => {
           </p>
         </motion.div>
 
-        {/* Card 2 */}
+        {/* Section 2 */}
         <motion.div
-          custom={2}
+          className="w-[550px] min-h-[282px] rounded-[12px] p-[20px] bg-[#FAFAFA] shadow-[0_0_4px_0_rgba(0,0,0,0.25)]"
+          variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-          className="w-[550px] min-h-[282px] rounded-[12px] p-[20px] bg-[#FAFAFA] shadow-[0_0_4px_0_rgba(0,0,0,0.25)]"
+          viewport={{ once: false }}
+          custom={2}
         >
           <h3 className="font-manrope font-bold text-[24px] leading-[140%] tracking-[1%] text-[#3A3A3A]">
             WE PRACTICE WHAT WE TEACH
@@ -68,14 +74,14 @@ const Box = () => {
           </div>
         </motion.div>
 
-        {/* Logo Grid */}
+        {/* Section 3 */}
         <motion.div
-          custom={3}
+          className="w-[653px] h-[1306.28px] gap-[10px] rounded-[12px] p-[20px] bg-[#FAFAFA] shadow-[0px_0px_4px_0px_#00000040]"
+          variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-          className="w-[653px] h-[1306.28px] gap-[10px] rounded-[12px] p-[20px] bg-[#FAFAFA] shadow-[0px_0px_4px_0px_#00000040]"
+          viewport={{ once: false }}
+          custom={3}
         >
           <h3 className="w-[613px] h-[34px] font-manrope font-bold text-[24px] leading-[140%] tracking-[0.01em] text-[#3A3A3A]">
             ACROSS REGIONS, ACROSS INDUSTRIES
@@ -84,43 +90,31 @@ const Box = () => {
             Established in 2015 in Singapore, we have worked with clients across continents and industries, mining insights hiding in plain sight.
           </p>
 
-          {/* Logo Sections */}
-          {/* Logo Sections */}
-<div className="flex flex-col w-[596px] h-[1168.28px] gap-[20px] pt-10">
-  {[
-    ["20.png", "3.png", "1.png", "31.png"],
-    ["11.png", "6.png", "8.png", "17.png"],
-    ["7.png", "2.png", "0.png", "18.png"],
-    ["19.png", "4.png", "10.png", "28.png"],
-    ["expedia.png", "9.png", "15.png", "wagely.png"],
-    ["12.png", "23.png", "24.png", "13.png"],
-    ["29.png", "32.png", "euyan.png", "30.png"],
-    ["14.png", "25.png", "27.png", "21.png"],
-    ["5.png", "16.png"],
-  ].map((group, idx) => (
-    <motion.div
-      key={idx}
-      custom={idx + 4}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      variants={fadeInUp}
-      className={`flex items-center w-[596px] gap-[40px] ${group.length < 4 ? 'justify-end' : ''}`}
-    >
-      {group.map((src, i) => (
-        <Image
-          key={i}
-          src={`/${src}`} // must be in public folder
-          alt={`logo-${i}`}
-          width={119}
-          height={119}
-          className="h-auto max-h-[119px] w-[119px]"
-        />
-      ))}
-    </motion.div>
-  ))}
-</div>
+          {/* Logo Grid */}
+          <div className="flex flex-col w-[596px] h-[1168.28px] gap-[20px] pt-10">
+            {[
+              ['./20.png', './3.png', './1.png', './31.png'],
+              ['./11.png', './6.png', './8.png', './17.png'],
+              ['./7.png', './2.png', './0.png', './18.png'],
+              ['./19.png', './4.png', './10.png', './28.png'],
+              ['./expedia.png', './9.png', './15.png', './wagely.png'],
+              ['./12.png', './23.png', './24.png', './13.png'],
+              ['./29.png', './32.png', './euyan.png', './30.png'],
+              ['./14.png', './25.png', './27.png', './21.png'],
+            ].map((row, rowIndex) => (
+              <div key={rowIndex} className="flex items-center w-[596px] h-[119px] gap-[40px]">
+                {row.map((src, i) => (
+                  <img key={i} src={src} alt={`Logo ${rowIndex + 1}-${i + 1}`} className="w-[119px] object-contain" />
+                ))}
+              </div>
+            ))}
 
+            {/* Last row */}
+            <div className="flex items-center justify-end w-[596px] h-[78px] gap-[40px] pb-8">
+              <img src="./5.png" alt="Logo last-1" className="w-[119px] h-[71px]" />
+              <img src="./16.png" alt="Logo last-2" className="w-[119px] h-[78px]" />
+            </div>
+          </div>
         </motion.div>
       </div>
     </div>
