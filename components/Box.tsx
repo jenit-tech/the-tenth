@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from 'next/image'
+import Image from 'next/image'; // Importing Next.js Image
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -48,7 +48,6 @@ const Box = () => {
             Strategies that work better and cost less. <br />
             We&apos;re self-funded, independent and focused on one thing: delivering results you can measure.
           </p>
-
         </motion.div>
 
         {/* Section 2 */}
@@ -94,30 +93,39 @@ const Box = () => {
           </p>
 
           {/* Logo Grid */}
-          <div className="flex flex-col w-[596px] h-[1168.28px] gap-[20px] pt-10">
-            {[
-              ['./20.png', './3.png', './1.png', './31.png'],
-              ['./11.png', './6.png', './8.png', './17.png'],
-              ['./7.png', './2.png', './0.png', './18.png'],
-              ['./19.png', './4.png', './10.png', './28.png'],
-              ['./expedia.png', './9.png', './15.png', './wagely.png'],
-              ['./12.png', './23.png', './24.png', './13.png'],
-              ['./29.png', './32.png', './euyan.png', './30.png'],
-              ['./14.png', './25.png', './27.png', './21.png'],
-            ].map((row, rowIndex) => (
-              <div key={rowIndex} className="flex items-center w-[596px] h-[119px] gap-[40px]">
-                {row.map((src, i) => (
-                  <Image key={i} src={src} alt={`Logo ${rowIndex + 1}-${i + 1}`} className="w-[119px] object-contain" />
-                ))}
-              </div>
-            ))}
+        {/* Logo Grid */}
+<div className="flex flex-col w-[596px] h-[1168.28px] gap-[20px] pt-10">
+  {[
+    ['/20.png', '/3.png', '/1.png', '/31.png'],
+    ['/11.png', '/6.png', '/8.png', '/17.png'],
+    ['/7.png', '/2.png', '/0.png', '/18.png'],
+    ['/19.png', '/4.png', '/10.png', '/28.png'],
+    ['/expedia.png', '/9.png', '/15.png', '/wagely.png'],
+    ['/12.png', '/23.png', '/24.png', '/13.png'],
+    ['/29.png', '/32.png', '/euyan.png', '/30.png'],
+    ['/14.png', '/25.png', '/27.png', '/21.png'],
+  ].map((row, rowIndex) => (
+    <div key={rowIndex} className="flex items-center w-[596px] h-[119px] gap-[40px]">
+      {row.map((src, i) => (
+        <Image
+          key={i}
+          src={src}
+          alt={`Logo ${rowIndex + 1}-${i + 1}`}
+          width={119}
+          height={119}
+          className="object-contain"
+        />
+      ))}
+    </div>
+  ))}
 
-            {/* Last row */}
-            <div className="flex items-center justify-end w-[596px] h-[78px] gap-[40px] pb-8">
-              <Image src="./5.png" alt="Logo last-1" className="w-[119px] h-[71px]" />
-              <Image src="./16.png" alt="Logo last-2" className="w-[119px] h-[78px]" />
-            </div>
-          </div>
+  {/* Last row */}
+  <div className="flex items-center justify-end w-[596px] h-[78px] gap-[40px] pb-8">
+    <Image src="/5.png" alt="Logo last-1" width={119} height={71} />
+    <Image src="/16.png" alt="Logo last-2" width={119} height={78} />
+  </div>
+</div>
+
         </motion.div>
       </div>
     </div>
